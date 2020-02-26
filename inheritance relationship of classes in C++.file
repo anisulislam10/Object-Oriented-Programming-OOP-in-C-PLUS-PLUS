@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+class circle {
+protected:
+	double  radius;
+
+public:
+	circle()
+	{
+		radius = 0;
+
+	}
+	circle(double radius)
+	{
+		radius = radius;
+	}
+	void setdata()
+	{
+		cout << "Enter the Radius OF Circle" << endl;
+		cin >> radius;
+	}
+	void showdata()
+	{
+		cout << "Area OF Circle is :" << 2 * 3.14 * radius << endl;
+	}
+};
+class cylinder :public circle
+{
+protected:
+	double height;
+
+public:
+
+
+	cylinder()
+	{
+		height = 0;
+		radius = 0;
+	}
+	cylinder(double radius, double height)
+	{
+		radius = radius;
+		height = height;
+	}
+	void satdata()
+	{
+		cout << "Enter the Height of cylinder" << endl;
+		cin >> height;
+		cout << "Enter the radius of cylinder" << endl;
+		cin >> radius;
+	}
+	void shdata()
+	{
+		cout << "The Volume of cylinder is " << 3.14 * 2 * radius * height << endl;
+	}
+
+};
+
+int main()
+{
+	circle c;
+	c.setdata();
+	c.showdata();
+
+	cout << endl;
+
+	cylinder cy;
+	cy.satdata();
+	cy.shdata();
+}
