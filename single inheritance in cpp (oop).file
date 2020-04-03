@@ -1,0 +1,52 @@
+*************************************
+*      copyright © anisul islam    *				
+*				   *
+*************************************
+#include<iostream>
+#include<string>
+using namespace std;
+class departments {
+private:
+	string departmentName;
+public:
+	void getdata()
+	{
+		cout << "enter department Name:";
+		cin >> departmentName;
+	}
+	void showdata()
+	{
+		cout << "department:" << departmentName << endl;
+	}
+};
+class mathteacher : public departments {
+private:
+	string teacherName;
+	string teacherAdress;
+	int teacherRegistration;
+public:
+	void get()
+	{
+		cout << "enter teacher name:";
+		cin >> teacherName;
+		cout << "enter teacher adress:";
+		cin >> teacherAdress;
+		cout << "enter teacher registration:";
+		cin >> teacherRegistration;
+	}
+	void display()
+	{
+		cout << "teacher name:" << teacherName << endl;
+		cout << "teacher adress:" << teacherAdress << endl;
+		cout << "teacher registration :" << teacherRegistration << endl;
+	}
+};
+int main()
+{
+	mathteacher mt;
+	mt.getdata();
+	mt.get();
+	mt.showdata();
+	mt.display();
+	return 0;
+}
