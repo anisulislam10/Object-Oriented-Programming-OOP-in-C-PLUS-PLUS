@@ -1,0 +1,187 @@
+        --------------------------------
+	*  				*	
+	* copyright © Anisul islam      *
+	* BS Software Engineering	*
+	*  OOP in CPP			*
+	* Inheritance RelationShip	*
+	*------------------------------ *
+#include<iostream>
+#include<string>
+using namespace std;
+class Book {
+private:
+	string authorName;
+	string isbn;
+	int numberOfpages;
+	float price;
+	string title;
+public:
+	Book() {
+		authorName = "";
+		isbn = "";
+		numberOfpages = 0;
+		price = 0;
+		title = "";
+	}
+	Book(string title, string author,float price) {
+
+		title = title;
+		authorName = author;
+		price = price;
+	}
+	Book(string title,string author,float price, string isbn, int numofpages ) {
+
+		title = title;
+		authorName = author;
+		price = price;
+		isbn = isbn;
+		numberOfpages = numofpages;
+	}
+	void getdata_book() {
+		cout << "enter author name:";
+		cin >> authorName;
+		cout << "enter isbn:";
+		cin >> isbn;
+		cout << "enter number of pages:";
+		cin >> numberOfpages;
+		cout << "enter price:";
+		cin >> price;
+		cout << "enter title:";
+		cin >> title;
+	}
+	void showdata_book()
+	{
+		cout << "**********************************" << endl;
+		cout << "Book Data" << endl;
+		cout << "author name:" << authorName << endl;
+		cout << "isbn:" << isbn << endl;
+		cout << "number of pages:" << numberOfpages << endl;
+		cout << "price:" << price << endl;
+		cout << "title:" << title << endl;
+	}
+};
+class Ebook : public Book {
+private:
+	string downloadURL;
+	float sizeMB;
+public:
+	Ebook()
+	{
+		downloadURL = "";
+		sizeMB = 0;
+	}
+	Ebook(string title, string author, float price, float size) {
+
+		title = title;
+		author= author;
+		price = price;
+		sizeMB = size;
+	}
+	Ebook(string title, string author, float price, string isbn,int numofpages,float size) {
+		title = title;
+		author = author;
+		price = price;
+		isbn = isbn;
+		sizeMB = size;
+	}
+	void getdata_ebook() {
+		cout << "enter download URL:";
+		cin >> downloadURL;
+		cout << "enter size of file:";
+		cin>>sizeMB;
+	}
+	void showdata_ebook() {
+		cout << "**********************************" << endl;
+		cout << "EBook Data" << endl;
+		cout << "download URL:" << downloadURL << endl;
+		cout << "Size in MB:" << sizeMB << endl;
+	}
+};
+class PaperBook : public Book {
+private:
+	int numberOfcopies;
+	float weight;
+public:
+	PaperBook() {
+		numberOfcopies = 0;
+		weight = 0.0;
+	}
+	PaperBook(string title, string author, float price, float numcopies) {
+
+		title = title;
+		author = author;
+		price = price;
+		numberOfcopies = numcopies;
+	}
+	PaperBook(string title, string author, float price, string isbn,int numofpages,int numofcopies, float weig ) {
+		title = title;
+		author = author;
+		price = price;
+		isbn = isbn;
+		numofpages = numofpages;
+		numberOfcopies = numofcopies;
+		weight = weig;
+	}
+	void getdata_paperbook()
+	{
+		cout << "enter number of copies:";
+		cin >> numberOfcopies;
+		cout << "enter weight:";
+		cin >> weight;
+	}
+	void showdata_paperbook() {
+		cout << "**********************************" << endl;
+		cout << "PaperBook Data" << endl;
+		cout << "Number of copies:" << numberOfcopies << endl;
+		cout << "weight:" << weight << endl;
+	}
+};
+class AudioBook : public Book {
+private:
+	int playTime;
+public:
+	AudioBook() {
+		playTime = 0;
+	}
+	AudioBook(string title, string author, float price, int pla) {
+		title = title;
+		author = author;
+		price = price;
+		playTime = pla;
+	}
+	AudioBook(string title, string author, float price,string isbn,int numofpages, int pla) {
+		title = title;
+		author = author;
+		price = price;
+		isbn = isbn;
+		numofpages = numofpages;
+		playTime = pla;
+	}
+	void getdata_audiobook() {
+		cout << "enter play time:";
+		cin >> playTime;
+	}
+	void showdata_audiobook() {
+		cout << "**********************************" << endl;
+		cout << "AudioBook Data" << endl;
+		cout << "play time:" << playTime << endl;
+	}
+};
+int main() {
+	Ebook eb;
+	AudioBook ab;
+	PaperBook pb;
+	eb.getdata_book();
+	eb.getdata_ebook();
+	ab.getdata_book();
+	ab.getdata_audiobook();
+	pb.getdata_book();
+	pb.getdata_paperbook();
+	eb.showdata_book();
+	eb.showdata_ebook();
+	ab.showdata_book();
+	ab.showdata_audiobook();
+	pb.showdata_book();
+	pb.showdata_paperbook();
+	return 0;
+}

@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+class mother {
+public:
+	void display() {
+		cout << "mother: display function" << endl;
+	}
+};
+class daughter : public mother {
+public:
+	void display() {
+		cout << "doughter:: display function" << endl;
+		mother::display();
+	}
+};
+int main() {
+	daughter d;
+	d.display();
+	return 0;
+}
