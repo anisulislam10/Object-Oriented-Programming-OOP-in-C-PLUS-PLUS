@@ -1,0 +1,714 @@
+//banking management system using c++ language
+//features
+// > widthdraw Money
+//> Deposit Money
+// > deposit with ATM
+// code by anisul islam
+
+#include<iostream>
+#include<string>
+using namespace std;
+class BankEmploye {
+
+	protected:
+		long long int accountHolderCNIC = 0;
+		char accountType;
+		string typeOfCreditCard;
+		string accountHolderFirstName;
+		string accountHolderMiddlename;
+		string accountHolderLastName;
+		long long int uniqueAccountNumber = 0;
+		string CNICadress;
+		string accountHolderTelephoneNumber;
+		int accountHolderDOB_date = 0;
+		int  accountHolderDOB_month = 0;
+		int  accountHolderDOB_year = 0;
+		float balance = 0;
+		string password;
+		//int sizes;
+		BankEmploye* BEA;
+		int sizes = 0;
+	public:
+
+		
+		void CreateUserInformation() {
+			cout << "\t\t*****************************************" << endl;
+			cout << "\t\t\t CREATE NEW ACCOUNT" << endl;
+			cout << "\t\t*****************************************" << endl;
+			
+			cout << "HOW MANY ACCOUNT HODLER DO YOU WANT TO REGISTER : ";
+			cin >> sizes;
+			BEA = new BankEmploye[sizes];
+			cin.ignore();
+			for (int i = 0; i < sizes; i++)
+			{
+				cout << endl;
+				cout << "account holder  " << i + 1 << ":" << endl;
+
+				
+
+				
+
+
+				//cout << endl;
+
+
+				cout << "\t\tPlease Enter Account Holder CNIC :";
+				cin >> BEA[i].accountHolderCNIC;
+				cout << "\t\tPlease Enter Account Holder First Name :";
+				cin >> BEA[i].accountHolderFirstName;
+				cout << "\t\tPlease Enter Account Holder Middle Name :";
+				cin >> BEA[i].accountHolderMiddlename;
+				cout << "\t\tPlease Enter Account Holder Last Name :";
+				cin >> BEA[i].accountHolderLastName;
+				cout << "\t\tPlease Enter Account Holder CNIC Address :";
+				cin >> BEA[i].CNICadress;
+				cout << "\t\tPlease Enter Account Holder Date Of Birth" << endl;
+				cout << "\t\t\tDate Of Birth year :";
+				cin >> BEA[i].accountHolderDOB_year;
+				cout << "\t\t\tDate Of Birth Month :";
+				cin >> BEA[i].accountHolderDOB_month;
+				cout << "\t\t\tDate Of Birth Date :";
+				cin >> BEA[i].accountHolderDOB_date;
+
+
+
+				cout << "\t\tPlese Allocate a Unique Account Number :";
+				cin >> BEA[i].uniqueAccountNumber;
+				cout << "\t\tPlease Enter Account Type(S/C):";
+				cin >> BEA[i].accountType;
+
+				long long int balance = 0;
+				if (BEA[i].accountType == 's')
+				{
+				
+					cout << "\n\t\t\t\t\t Enter Initial Amount (>= Rs.500) : ";
+					cin >>BEA[i].balance;
+					if (BEA[i].balance < 500) {
+						cout << "\n\t\t\t\t Please Enter greater than Rs.500" << endl;
+						
+					}
+				}
+				else if (BEA[i].accountType == 'c')
+				{
+				
+					cout << "\n\t\t\t\t\t Enter Initial Amount (>= Rs.1000) : ";
+					cin >> BEA[i].balance;
+					if (BEA[i].balance < 1000) {
+						cout << "\n\t\t\t\t Please Enter greater than Rs.1000" << endl;
+						
+					}
+				}
+
+				else
+				{
+					cout << "\n\t\t\t\t Try Again Press 'c' for Current Account , 's' for Saving Account" << endl;
+					//goto retry;
+				}
+				cout << "\t\tPlease Enter Credit Card Type(mc/lc/vc) :";
+				cin >> BEA[i].typeOfCreditCard;
+				if (BEA[i].typeOfCreditCard == "mc") {
+				 if(BEA[i].balance > 50000)
+					{
+						cout << "intrest rate is 18%" << endl;
+					}
+					if (BEA[i].typeOfCreditCard == "lc")
+					{
+						 if (BEA[i].balance > 10000)
+						{
+							cout << "intrest rate is 25%" << endl;
+						}
+					}
+					if (BEA[i].typeOfCreditCard == "vc")
+					{
+						if (BEA[i].balance > 100000)
+						{
+							cout << "intrest rate is 10%" << endl;
+						}
+					}
+					else {
+					cout<<"	Try Again Press 'lc' for local card, 'vc' for vissa card  'mc' for master card" << endl;
+					}
+					
+				}
+				system("cls");
+				char yes;
+				cout << "\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t Press 'Y' to Confirm 'N' to retry  : ";
+				cin >> yes;
+				if (yes == 'y' || yes == 'Y')
+				{
+					cout << "\t\t******************************************" << endl;
+					cout << "\t\t ACCOUNT HAS BEEN CREATED SUCCESSFULLY! THANKS FOR REGISTRATION" << endl;
+					//_getch();
+				}
+				else
+				{
+
+
+					cout << endl << endl << endl << endl;
+					CreateUserInformation();
+				}
+			}
+				}
+				void ShowAccountInformation() {
+					cout << "\t\t*****************************************" << endl;
+					cout << "\t\t\t ACCOUNT HOLDER DATA INFORMATION " << endl;
+					cout << "\t\t*****************************************" << endl;
+					for (int i = 0; i < sizes; i++)
+					{
+						cout << "Account holder " << i + 1 << ":" << endl;
+
+						cout << "\t\tAccount Holder CNIC : " << BEA[i].accountHolderCNIC << endl;
+
+						cout << "\t\tAccount Holder First Name :" << BEA[i].accountHolderFirstName << endl;
+
+						cout << "\t\tAccount Holder Middle Name : " << BEA[i].accountHolderMiddlename << endl;
+
+						cout << "\t\tAccount Holder Last Name : " << BEA[i].accountHolderLastName << endl;
+
+						cout << "\t\tAccount Holder CNIC Address : " << BEA[i].CNICadress << endl;
+
+						cout << "\t\tAccount Holder Date Of Birth" << endl;
+						cout << "\t\tDate Of Birth year : " << BEA[i].accountHolderDOB_year << endl;
+						cout << "\t\tDate Of Birth Month :" << BEA[i].accountHolderDOB_month << endl;
+
+						cout << "\t\tDate Of Birth Date : " << BEA[i].accountHolderDOB_date << endl;
+
+						cout << "\t\tAccount Type :" << BEA[i].accountType << endl;
+
+						cout << "\t\tCredit Card Type : " << BEA[i].typeOfCreditCard << endl;
+
+						cout << "\t\tUnique Account Number : " << BEA[i].uniqueAccountNumber << endl;
+						cout << "Currrent Balance : " << balance << endl;
+					}
+					cout << "\t\t******************************************" << endl;
+				}
+				void DeleteAccount() {
+					system("CLS");
+					
+					cout << "Which one do you delete" << endl;
+					cout << "Account holder" << 1 + 1;
+						cout << "\n\nAccount number does not exist";
+					for (int i = 0; i < sizes; i++)
+					{
+						cout << "\t\tAccount Holder CNIC : " << BEA[i].accountHolderCNIC << endl;
+
+						cout << "\t\tAccount Holder First Name :" << BEA[i].accountHolderFirstName << endl;
+
+						cout << "\t\tAccount Holder Middle Name : " << BEA[i].accountHolderMiddlename << endl;
+
+						cout << "\t\tAccount Holder Last Name : " << BEA[i].accountHolderLastName << endl;
+
+						cout << "\t\tAccount Holder CNIC Address : " << BEA[i].CNICadress << endl;
+
+						cout << "\t\tAccount Holder Date Of Birth" << endl;
+						cout << "\t\tDate Of Birth year : " << BEA[i].accountHolderDOB_year << endl;
+						cout << "\t\tDate Of Birth Month :" << BEA[i].accountHolderDOB_month << endl;
+
+						cout << "\t\tDate Of Birth Date : " << BEA[i].accountHolderDOB_date << endl;
+
+						cout << "\t\tAccount Type :" << BEA[i].accountType << endl;
+
+						cout << "\t\tCredit Card Type : " << BEA[i].typeOfCreditCard << endl;
+
+						cout << "\t\tUnique Account Number : " << BEA[i].uniqueAccountNumber << endl;
+					}
+					int index = 0;
+					cin >> index;
+					for (int i = index; i < index; i++)
+					{
+						BEA[i - 1].BEA[i].accountHolderCNIC = BEA[i].accountHolderCNIC;
+						BEA[i - 1].BEA[i].accountHolderFirstName = BEA[i].accountHolderFirstName;
+						BEA[i - 1].BEA[i].accountHolderMiddlename = BEA[i].accountHolderMiddlename;
+						BEA[i - 1].BEA[i].accountHolderLastName = BEA[i].accountHolderLastName;
+						BEA[i - 1].BEA[i].CNICadress = BEA[i].CNICadress;
+						BEA[i - 1].BEA[i].accountHolderDOB_year = BEA[i].accountHolderDOB_year;
+						BEA[i - 1].BEA[i].accountHolderDOB_month = BEA[i].accountHolderDOB_month;
+						BEA[i - 1].BEA[i].accountHolderDOB_date = BEA[i].accountHolderDOB_date;
+						BEA[i - 1].BEA[i].accountType = BEA[i].accountType;
+						BEA[i - 1].BEA[i].typeOfCreditCard = BEA[i].typeOfCreditCard;
+						BEA[i - 1].BEA[i].uniqueAccountNumber = BEA[i].uniqueAccountNumber;
+						BEA[i - 1].BEA[i].accountHolderMiddlename = BEA[i].accountHolderMiddlename;
+						BEA[i - 1].BEA[i].accountHolderMiddlename = BEA[i].accountHolderMiddlename;
+					}
+					sizes--;
+					
+				}
+				void UpdateAccont() {
+					char ch;
+					int index = 0;
+					
+					
+						cout << "Which one do you want update in following list" << endl;
+						for (int i = 0; i < sizes; i++)
+						{
+							cout << "Account holder " << i + 1 << ":" << endl;
+
+							cout << "\t\tAccount Holder CNIC : " << BEA[i].accountHolderCNIC << endl;
+
+							cout << "\t\tAccount Holder First Name :" << BEA[i].accountHolderFirstName << endl;
+
+							cout << "\t\tAccount Holder Middle Name : " << BEA[i].accountHolderMiddlename << endl;
+
+							cout << "\t\tAccount Holder Last Name : " << BEA[i].accountHolderLastName << endl;
+
+							cout << "\t\tAccount Holder CNIC Address : " << BEA[i].CNICadress << endl;
+
+							cout << "\t\tAccount Holder Date Of Birth" << endl;
+							cout << "\t\tDate Of Birth year : " << BEA[i].accountHolderDOB_year << endl;
+							cout << "\t\tDate Of Birth Month :" << BEA[i].accountHolderDOB_month << endl;
+
+							cout << "\t\tDate Of Birth Date : " << BEA[i].accountHolderDOB_date << endl;
+
+							cout << "\t\tAccount Type :" << BEA[i].accountType << endl;
+
+							cout << "\t\tCredit Card Type : " << BEA[i].typeOfCreditCard << endl;
+
+							cout << "\t\tUnique Account Number : " << BEA[i].uniqueAccountNumber << endl;
+						}
+
+						cin >> index;
+						for (int i = 0; i < sizes; i++)
+						{
+							cout << "\t\tPlease Enter Account Holder CNIC :";
+							cin >> BEA[i].accountHolderCNIC;
+							cout << "\t\tPlease Enter Account Holder First Name :";
+							cin >> BEA[i].accountHolderFirstName;
+							cout << "\t\tPlease Enter Account Holder Middle Name :";
+							cin >> BEA[i].accountHolderMiddlename;
+							cout << "\t\tPlease Enter Account Holder Last Name :";
+							cin >> BEA[i].accountHolderLastName;
+							cout << "\t\tPlease Enter Account Holder CNIC Address :";
+							cin >> BEA[i].CNICadress;
+							cout << "\t\tPlease Enter Account Holder Date Of Birth" << endl;
+							cout << "\t\t\tDate Of Birth year :";
+							cin >> BEA[i].accountHolderDOB_year;
+							cout << "\t\t\tDate Of Birth Month :";
+							cin >> BEA[i].accountHolderDOB_month;
+							cout << "\t\t\tDate Of Birth Date :";
+							cin >> BEA[i].accountHolderDOB_date;
+
+
+
+
+
+
+
+
+
+							cout << "\t\tPlese Allocate a Unique Account Number :";
+							cin >> BEA[i].uniqueAccountNumber;
+							cout << "\t\tPlease Enter Account Type(S/C):";
+							cin >> BEA[i].accountType;
+
+							balance = 0;
+							if (accountType == 's')
+							{
+							five:
+								cout << "\n\t\t\t\t\t Enter Initial Amount (>= Rs.500) : ";
+								cin >> BEA[i].balance;
+								if (BEA[i].balance < 500) {
+									cout << "\n\t\t\t\t Please Enter greater than Rs.500" << endl;
+									goto five;
+								}
+							}
+							else if (BEA[i].accountType == 'c')
+							{
+							ten:
+								cout << "\n\t\t\t\t\t Enter Initial Amount (>= Rs.1000) : ";
+								cin >> BEA[i].balance;
+								if (BEA[i].balance < 1000) {
+									cout << "\n\t\t\t\t Please Enter greater than Rs.1000" << endl;
+									goto ten;
+								}
+							}
+
+							else
+							{
+								cout << "\n\t\t\t\t Try Again Press 'c' for Current Account , 's' for Saving Account" << endl;
+								//goto retry;
+							}
+							cout << "\t\tPlease Enter Credit Card Type(master card/local card) :";
+							cin >> BEA[i].typeOfCreditCard;
+							system("cls");
+							char yes;
+							cout << "\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\t\t Press 'Y' to Confirm 'N' to retry  : ";
+							cin >> yes;
+							if (yes == 'y' || yes == 'Y')
+							{
+								cout << "\t\t******************************************" << endl;
+								cout << "\t\t ACCOUNT HAS BEEN UPDATED SUCCESSFULLY! " << endl;
+								//_getch();
+							}
+							else
+							{
+
+
+								cout << endl << endl << endl << endl;
+								CreateUserInformation();
+							}
+
+						}
+				}
+				void FindAccount() {
+
+				
+				}
+				void depositmoney() {
+					int amount = 0;
+					long long int acc;
+				with:
+					cout << "\n\n\t\tEnter account Number:";
+					cin >> acc;
+					if (acc != uniqueAccountNumber)
+					{
+						cout << "\n\n\t\t  Enter Deposit Amount : ";
+						cin >> amount;
+					}
+
+					if (amount >= 100)
+					{
+						balance = balance + amount;
+
+
+					}
+
+
+
+
+					else
+					{
+						cout << "\n\n\n\t\t\t\t\t\tAmount Should be Greater than equal Rs.100 " << endl << endl << endl;
+						goto with;
+					}
+					cout << "\n\n\n\n\t\t\t\t\t You have Deposit Money Successfully ";
+					if (accountType == 'c' || accountType == 'C')
+					{
+						if (balance < 1000)
+						{
+							cout << "\n\n\n\t\t\t\t\t\t Your have cross the limit of minimum balance charges may apply ";
+							balance = balance + 100;
+						}
+					}
+					else {
+						cout << "account not found" << endl;
+						depositmoney();
+					}
+					cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t Current Balance is Rs." << balance;
+
+
+				}
+				void widthdeaeMoney() {
+					int amount = 0;
+					long long int acno;
+				with:
+					cout << "Enter account Number:";
+					cin >> acno;
+					if (acno = uniqueAccountNumber) {
+					cout << "\n\n\t\t\t\t\t\t\t  Enter amount to Withdraw : ";
+						cin >> amount;
+
+						if (amount >= 100)
+						{
+							if (balance - amount < 0)
+							{
+								cout << "\n\n\n\n\t\t\t\t Insufficient Balance ";
+
+								return;
+							}
+							else
+								balance = balance - amount;
+
+						}
+						else
+						{
+							cout << "\n\n\n\t\t\t\t\t\t\t\t\t\tAmount Should be Greater than equal Rs.100 " << endl << endl << endl;
+							goto with;
+						}
+						cout << "\n\n\n\n\t\t\t\t\t\t\t\t You have Withdrawl Successfully ";
+						if (accountType == 'c' || accountType == 'C')
+						{
+							if (balance < 1000)
+							{
+								cout << "\n\n\n\t\t\t\t\t\t Your have cross the limit of minimum balance charges may apply ";
+								balance = balance - 100;
+							}
+						}
+						cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t Current Balance is Rs." << balance;
+
+					}
+					else {
+
+							cout << "Account Number does not exist ! please type correct account Number" << endl;
+
+							widthdeaeMoney();
+					}
+
+
+
+				}
+
+
+	
+
+	
+
+};
+
+
+
+class bankCustomer : public BankEmploye {
+public:
+	void miniStatement() {
+		cout << "Enter Account Number:";
+		cin >> uniqueAccountNumber;
+		cout << "Enter CNIC:";
+		cin >> accountHolderCNIC;
+
+
+	}
+	void widthdrawViaCreditCard()
+	{
+		int amount = 0;
+	with:
+		cout << "Enter account Number:";
+		cin >> uniqueAccountNumber;
+
+		cout << "\n\n\t\t\t\t\t\t\t  Enter amount to Withdraw : ";
+		cin >> amount;
+
+		if (amount >= 100)
+		{
+			if (balance - amount < 0)
+			{
+				cout << "\n\n\n\n\t\t\t\t\t\t\t\t\t Insufficient Balance ";
+
+				return;
+			}
+			else
+				balance = balance - amount;
+
+		}
+		else
+		{
+			cout << "\n\n\n\t\t\t\t\t\t\t\t\t\tAmount Should be Greater than equal Rs.100 " << endl << endl << endl;
+			goto with;
+		}
+		cout << "\n\n\n\n\t\t\t\t\t\t\t\t You have Withdrawl Successfully ";
+		if (accountType == 'c' || accountType == 'C')
+		{
+			if (balance < 1000)
+			{
+				cout << "\n\n\n\t\t\t\t\t\t Your have cross the limit of minimum balance charges may apply ";
+				balance = balance - 100;
+			}
+		}
+		cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t Current Balance is Rs." << balance;
+
+
+	}
+	void widthdrawViaCheckBook() {
+		int amount = 0;
+	with:
+		cout << "Enter account Number:";
+		cin >> uniqueAccountNumber;
+
+		cout << "\n\n\t\t\t\t\t\t\t  Enter amount to Withdraw : ";
+		cin >> amount;
+
+		if (amount >= 100)
+		{
+			if (balance - amount < 0)
+			{
+				cout << "\n\n\n\n\t\t\t\t\t\t\t\t\t Insufficient Balance ";
+
+				return;
+			}
+			else
+				balance = balance - amount;
+
+		}
+		else
+		{
+			cout << "\n\n\n\t\t\t\t\t\t\t\t\t\tAmount Should be Greater than equal Rs.100 " << endl << endl << endl;
+			goto with;
+		}
+		cout << "\n\n\n\n\t\t\t\t\t\t\t\t You have Withdrawl Successfully ";
+		if (accountType == 'c' || accountType == 'C')
+		{
+			if (balance < 1000)
+			{
+				cout << "\n\n\n\t\t\t\t\t\t Your have cross the limit of minimum balance charges may apply ";
+				balance = balance - 100;
+			}
+		}
+		cout << "\n\n\n\n\n\n\t\t\t\t\t\t\t Current Balance is Rs." << balance;
+
+
+	}
+	void BanalnceInquiry() {
+
+		cout << "\n\t\t\t\t  Enter Account Number : " << uniqueAccountNumber;
+		cout << "\n\n\t\t\t\t\t\t\t   Enter Account Holder CNIC : " << accountHolderCNIC;
+		if (accountType == 's' || accountType == 'S')
+			cout << "\n\n\t\t\t\t\t\t\t   Type of Account : Saving";
+		else
+			cout << "\n\n\t\t\t\t\t\t\t   Type of Account : Current";
+		cout << "\n\n\n\n\n\t\t\t\t\t\t\t\t\t\t   Your Available balance is Rs." << balance;
+
+
+	}
+	void TrancsctionHistory() {
+
+	}
+};
+
+		
+
+int main() {
+	char cho;
+	bankCustomer bankcustomerobj;
+
+	//BankCustomer objectofcustomer;
+	BankEmploye objectOfBankEmploye;
+	string bankEmployeUserName;
+	string bankEmployePassword;
+	string customerUserName;
+	string customerPassword;
+
+
+	do {
+		system("color B1");
+		int YourChoice;
+
+		cout << "\t\t **************************************************************************" << endl;
+		cout << " \t\t\t\tWELCOME TO BANKING MANAGEMENT SYSTEM" << endl;
+		cout << " \t\t\tCopyright (c) 2020, designed by: ANISUL ISLAM (3250 BSSE) facebook @ ianisulislam" << endl;
+		cout << "\t\t **************************************************************************" << endl;
+		cout << "\t\tPLEASE SELECT FROM MAIN MENU:" << endl;
+		cout << "\t\t PRESS [1]:  TO LOGIN AS A BANK EMPLOYE (MANAGER) " << endl;
+		cout << "\t\t PRESS [2]:  TO LOGIN AS A BANK CUSTOMER " << endl;
+		cout << "\t\t PRESS [0]:  TO EXIT THE PROGRAM " << endl;
+		cout << "\t\t *************************" << endl;
+		cout << "\tPLEASE ENTER YOUR CHOICE: ";
+		cin >> YourChoice;
+		switch (YourChoice)
+		{
+		case 1:
+			cout << "\t\t\t\t\t default setting" << endl;
+			cout << "\t\t\t\t\t USERNAME = admin & PASSWORD = pass" << endl;
+			cout << "\t\t TO LOGIN AS A BANK EMPLOYE (MANAGER) " << endl;
+			cout << "\t\tPLEASE ENTER USERNAME:";
+			cin >> bankEmployeUserName;
+			cout << "\t\tPLEASE ENTER PASSWORD:";
+			cin >> bankEmployePassword;
+			if (bankEmployeUserName != "admin" || bankEmployePassword != "pass")
+			{
+				cout << "\t\tINVALID USERNAME OR PASSWORD" << endl;
+				main();
+			}
+			else {
+				system("color A1");
+
+				int ch;
+				cout << "\t\t***LOGIN SUCCESS!***" << endl;
+				cout << "\t\t ************************************" << endl;
+
+				cout << "\t\tPRESS[3]: TO CREATE NEW ACCOUNT" << endl;
+				cout << "\t\tPRESS[4]: TO DELETE AN ACCOUNT" << endl;
+				cout << "\t\tPRESS[5]: TO UPDATE ACCOUNT" << endl;
+				cout << "\t\tPRESS[7]: TO DISPLAY ALL ACCOUNT HOLDER " << endl;
+				cout << "\t\tPRESS[8]: TO DEPOSIT AMOUNT" << endl;
+				cout << "\t\tPRESS[9]: TO WIDTHDRAW AMOUNT" << endl;
+				cout << "\t\tPLEASE ENTER YOUR CHOICE:";
+				cin >> ch;
+				switch (ch)
+				{
+				case 3:
+					bankcustomerobj.CreateUserInformation();
+					
+					break;
+				case 4:
+					bankcustomerobj.DeleteAccount();
+					break;
+				case 5:
+					bankcustomerobj.UpdateAccont();
+					break;
+				case 6:
+					bankcustomerobj.FindAccount();
+					break;
+				case 7:
+					bankcustomerobj.ShowAccountInformation();
+					break;
+				case 8:
+					bankcustomerobj.depositmoney();
+					break;
+				case 9:
+					bankcustomerobj.widthdeaeMoney();
+					break;
+
+				}
+
+
+			
+
+			break;
+			
+		case 2:
+			cout << "\t\t\t\t\t default setting" << endl;
+			cout << "\t\t\t\t\t USERNAME = admin & PASSWORD = pass" << endl;
+			cout << "\t\t TO LOGIN AS A BANK CUSTOMER " << endl;
+			cout << "\t\tPLEASE ENTER USERNAME:";
+			cin >> customerUserName;
+			cout << "\t\tPLEASE ENTER PASSWORD:";
+			cin >> customerPassword;
+			if (customerUserName != "admin" || customerPassword != "pass")
+			{
+				cout << "INVALID USERNAME OR PASSWORD" << endl;
+			}
+			else {
+				system("color E1");
+				cout << "\t\t***LOGIN SUCCESS!***" << endl;
+				cout << "\t\t ************************************" << endl;
+				cout << "\t\tPRESS[10]: MINI STATEMENT" << endl;
+				cout << "\t\tPRESS[11]: WIDTHDRAW MONEY VIA CREDIT CARD" << endl;
+				cout << "\t\tPRESS[12]: WIDTHDRAW MONEY VIA CHECK BOOK" << endl;
+				cout << "\t\tPRESS[13]: BALANCE INQUIRY" << endl;
+				cout << "Enter Your Choice:";
+				cin >> ch;
+				switch(ch)
+				{ 
+		case 11:
+			bankcustomerobj.widthdrawViaCreditCard();
+			break;
+		case 12:
+			bankcustomerobj.widthdrawViaCheckBook();
+			break;
+		case 13:
+			bankcustomerobj.BanalnceInquiry();
+			break;
+		case 14:
+			break;
+
+			}
+			}
+
+			break;
+
+		case 0:
+			exit(0);
+			break;
+		default:
+			cout << "\t\tINVALID CHOICE!" << endl;
+			break;
+			}
+
+	}cout << "DO YOU WANT TO RUN AGAIN [Y/N]:";
+		cin >> cho;
+
+			}while (cho = 'y' && cho != 'n');
+			system("pause");
+			return 0;
+			
+}
+
